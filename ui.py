@@ -594,6 +594,9 @@ if _do_run:
     # Save investigation
     _fname = save_investigation(
         query=query,
+        # Safely initialize session state variable before use
+        if "refined" not in st.session_state:
+        st.session_state.refined = ""
         refined_query=st.session_state.refined,
         model=model,
         preset_label=selected_preset_label,
